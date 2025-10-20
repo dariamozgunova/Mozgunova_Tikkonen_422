@@ -51,12 +51,8 @@
                     <DataGridTextColumn Header="Количество товаров" Binding="{Binding ProductCount}" Width="120"/>
                     <DataGridTextColumn Header="Средняя цена" Binding="{Binding AveragePrice, StringFormat=N2}" Width="120"/>
                     <DataGridTextColumn Header="Общая стоимость" Binding="{Binding TotalValue, StringFormat=N2}" Width="120"/>
-                    <DataGridTextColumn Header="Мин. цена" Binding="{Binding MinPrice, StringFormat=N2}" Width="100"/>
-                    <DataGridTextColumn Header="Макс. цена" Binding="{Binding MaxPrice, StringFormat=N2}" Width="100"/>
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
-
-
     </Grid>
 </Page>
