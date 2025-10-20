@@ -50,7 +50,10 @@ namespace Mozgunova_Tikkonen_422.Pages
         {
             try
             {
-                var products = context.Products.Include("Category").ToList();
+                var products = context.Products
+                    .Include("Category") 
+                    .ToList();
+
                 productsGrid.ItemsSource = products;
                 txtStatus.Text = $"Загружено товаров: {products.Count}";
             }
