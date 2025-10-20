@@ -12,47 +12,67 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <GroupBox Grid.Row="0" Header="Добавить/Редактировать товар" Padding="10">
+        <GroupBox Grid.Row="0" Header="Добавить/Редактировать товар" Padding="15">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                <TextBox x:Name="txtName" Grid.Column="0" Margin="5" Height="25" Text="Название"/>
-                <ComboBox x:Name="cmbCategory" Grid.Column="1" Margin="5" Height="25" DisplayMemberPath="CategoryName"/>
-                <TextBox x:Name="txtPrice" Grid.Column="2" Margin="5" Height="25" Text="0"/>
-                <TextBox x:Name="txtQuantity" Grid.Column="3" Margin="5" Height="25" Text="0"/>
-                <TextBlock x:Name="txtProductId" Grid.Column="4" Margin="5" VerticalAlignment="Center" Text="ID: 0"/>
+                <Grid Grid.Row="0" Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="5" Orientation="Horizontal">
-                    <Button x:Name="btnAdd" Content="Добавить" Click="BtnAdd_Click" Width="80" Height="25" Margin="5"/>
-                    <Button x:Name="btnUpdate" Content="Обновить" Click="BtnUpdate_Click" Width="80" Height="25" Margin="5"/>
-                    <Button x:Name="btnDelete" Content="Удалить" Click="BtnDelete_Click" Width="80" Height="25" Margin="5"/>
-                    <Button x:Name="btnClear" Content="Очистить" Click="BtnClear_Click" Width="80" Height="25" Margin="5"/>
+                    <TextBlock Grid.Column="0" Text="Название:" VerticalAlignment="Center" Margin="0,0,5,0" FontWeight="SemiBold"/>
+                    <TextBox x:Name="txtName" Grid.Column="1" Margin="0,0,10,0" Height="25" Text="" 
+                             ToolTip="Введите название товара"/>
+
+                    <TextBlock Grid.Column="2" Text="Категория:" VerticalAlignment="Center" Margin="0,0,5,0" FontWeight="SemiBold"/>
+                    <ComboBox x:Name="cmbCategory" Grid.Column="3" Margin="0,0,10,0" Height="25" 
+                              DisplayMemberPath="CategoryName" SelectedValuePath="CategoryID"
+                              ToolTip="Выберите категорию товара"/>
+
+                    <TextBlock Grid.Column="4" Text="Цена:" VerticalAlignment="Center" Margin="0,0,5,0" FontWeight="SemiBold"/>
+                    <TextBox x:Name="txtPrice" Grid.Column="5" Margin="0,0,10,0" Height="25" Text="0"
+                             ToolTip="Введите цену товара"/>
+
+                    <TextBlock Grid.Column="6" Text="Количество:" VerticalAlignment="Center" Margin="0,0,5,0" FontWeight="SemiBold"/>
+                    <TextBox x:Name="txtQuantity" Grid.Column="7" Height="25" Text="0"
+                             ToolTip="Введите количество товара"/>
+                </Grid>
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="btnAdd" Content="Добавить" Click="BtnAdd_Click" 
+                            Width="100" Height="30" Margin="5" Background="#FFDDDDDD" FontWeight="SemiBold"/>
+                    <Button x:Name="btnUpdate" Content="Редактировать" Click="BtnUpdate_Click" 
+                            Width="100" Height="30" Margin="5" Background="#FFDDDDDD" FontWeight="SemiBold"/>
+                    <Button x:Name="btnDelete" Content="Удалить" Click="BtnDelete_Click" 
+                            Width="100" Height="30" Margin="5" Background="#FFFFE0E0" FontWeight="SemiBold"/>
                 </StackPanel>
             </Grid>
         </GroupBox>
 
-        <DataGrid x:Name="productsGrid" Grid.Row="1" Margin="0,10,0,0" 
+        <DataGrid x:Name="productsGrid" Grid.Row="1" Margin="0,15,0,0" 
                   AutoGenerateColumns="False" SelectionChanged="ProductsGrid_SelectionChanged"
-                  IsReadOnly="True">
+                  IsReadOnly="True" GridLinesVisibility="Horizontal" HeadersVisibility="Column"
+                  FontSize="12" CanUserAddRows="False" CanUserDeleteRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding ProductID}" Width="50"/>
-                <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="200"/>
-                <DataGridTextColumn Header="Категория" Binding="{Binding Category.CategoryName}" Width="150"/>
-                <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="100"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding ProductID}" Width="60" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Название товара" Binding="{Binding Name}" Width="250"/>
+                <DataGridTextColumn Header="Категория" Binding="{Binding Category.CategoryName}" Width="180"/>
+                <DataGridTextColumn Header="Цена (руб)" Binding="{Binding Price, StringFormat=N2}" Width="120"/>
                 <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
-
-        <TextBlock x:Name="txtStatus" Grid.Row="2" Margin="5" Foreground="Blue"/>
     </Grid>
 </Page>
