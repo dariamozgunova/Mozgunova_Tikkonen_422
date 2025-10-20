@@ -15,15 +15,11 @@ using System.Windows.Shapes;
 
 namespace Mozgunova_Tikkonen_422
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            // По умолчанию открываем модуль товаров
             MainFrame.Navigate(new Pages.ProductsPage());
         }
 
@@ -34,7 +30,7 @@ namespace Mozgunova_Tikkonen_422
 
         private void BtnStatistics_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Модуль статистики будет реализован Разработчиком 2");
+            MainFrame.Navigate(new Pages.StatisticsPage());
         }
 
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
