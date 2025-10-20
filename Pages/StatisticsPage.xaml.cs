@@ -35,8 +35,6 @@ namespace Mozgunova_Tikkonen_422.Pages
             public int ProductCount { get; set; }
             public decimal AveragePrice { get; set; }
             public decimal TotalValue { get; set; }
-            public decimal MinPrice { get; set; }
-            public decimal MaxPrice { get; set; }
         }
 
         private void LoadStatistics()
@@ -61,9 +59,7 @@ namespace Mozgunova_Tikkonen_422.Pages
                                          CategoryName = g.Key.CategoryName,
                                          ProductCount = g.Sum(x => x.Quantity),
                                          AveragePrice = g.Average(x => x.Price),
-                                         TotalValue = g.Sum(x => x.Price * x.Quantity),
-                                         MinPrice = g.Min(x => x.Price),
-                                         MaxPrice = g.Max(x => x.Price)
+                                         TotalValue = g.Sum(x => x.Price * x.Quantity)
                                      }).ToList();
 
                 categoryStatsGrid.ItemsSource = categoryStats;
