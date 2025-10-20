@@ -51,11 +51,10 @@ namespace Mozgunova_Tikkonen_422.Pages
             try
             {
                 var products = context.Products
-                    .Include("Category") 
+                    .Include("Category")
                     .ToList();
 
                 productsGrid.ItemsSource = products;
-                txtStatus.Text = $"Загружено товаров: {products.Count}";
             }
             catch (System.Exception ex)
             {
@@ -71,7 +70,7 @@ namespace Mozgunova_Tikkonen_422.Pages
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtName.Text) || txtName.Text == "Название")
+            if (string.IsNullOrWhiteSpace(txtName.Text))
             {
                 MessageBox.Show("Введите название товара");
                 return;
@@ -92,7 +91,7 @@ namespace Mozgunova_Tikkonen_422.Pages
 
                 LoadProducts();
                 ClearForm();
-                txtStatus.Text = "Товар успешно добавлен";
+                MessageBox.Show("Товар успешно добавлен");
             }
             catch (System.Exception ex)
             {
@@ -124,7 +123,7 @@ namespace Mozgunova_Tikkonen_422.Pages
                         context.SaveChanges();
                         LoadProducts();
                         ClearForm();
-                        txtStatus.Text = "Товар успешно обновлен";
+                        MessageBox.Show("Товар успешно обновлен");
                     }
                 }
                 catch (System.Exception ex)
@@ -159,7 +158,7 @@ namespace Mozgunova_Tikkonen_422.Pages
 
                             LoadProducts();
                             ClearForm();
-                            txtStatus.Text = "Товар успешно удален";
+                            MessageBox.Show("Товар успешно удален");
                         }
                     }
                     catch (System.Exception ex)
@@ -183,11 +182,6 @@ namespace Mozgunova_Tikkonen_422.Pages
                 txtPrice.Text = selectedProduct.Price.ToString();
                 txtQuantity.Text = selectedProduct.Quantity.ToString();
             }
-        }
-
-        private void BtnClear_Click(object sender, RoutedEventArgs e)
-        {
-            ClearForm();
         }
 
         private void ClearForm()
