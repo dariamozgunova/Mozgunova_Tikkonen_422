@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mozgunova_Tikkonen_422"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Система учёта товаров" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="LightBlue">
+            <Button x:Name="btnProducts" Content="Товары" Click="BtnProducts_Click" Width="100" Height="30" Margin="5"/>
+            <Button x:Name="btnStatistics" Content="Статистика" Click="BtnStatistics_Click" Width="100" Height="30" Margin="5"/>
+            <Button x:Name="btnSearch" Content="Поиск" Click="BtnSearch_Click" Width="100" Height="30" Margin="5"/>
+        </StackPanel>
+
+        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

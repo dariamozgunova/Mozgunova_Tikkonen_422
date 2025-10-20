@@ -23,6 +23,23 @@ namespace Mozgunova_Tikkonen_422
         public MainWindow()
         {
             InitializeComponent();
+            // По умолчанию открываем модуль товаров
+            MainFrame.Navigate(new Pages.ProductsPage());
+        }
+
+        private void BtnProducts_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.ProductsPage());
+        }
+
+        private void BtnStatistics_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Модуль статистики будет реализован Разработчиком 2");
+        }
+
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Модуль поиска будет реализован Разработчиком 2");
         }
     }
 }
