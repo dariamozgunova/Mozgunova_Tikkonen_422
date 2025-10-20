@@ -53,11 +53,11 @@
 
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button x:Name="btnAdd" Content="Добавить" Click="BtnAdd_Click" 
-                            Width="100" Height="30" Margin="5" Background="#FFDDDDDD" FontWeight="SemiBold"/>
+                            Width="100" Height="30" Margin="5" FontWeight="SemiBold"/>
                     <Button x:Name="btnUpdate" Content="Редактировать" Click="BtnUpdate_Click" 
-                            Width="100" Height="30" Margin="5" Background="#FFDDDDDD" FontWeight="SemiBold"/>
+                            Width="100" Height="30" Margin="5" FontWeight="SemiBold"/>
                     <Button x:Name="btnDelete" Content="Удалить" Click="BtnDelete_Click" 
-                            Width="100" Height="30" Margin="5" Background="#FFFFE0E0" FontWeight="SemiBold"/>
+                            Width="100" Height="30" Margin="5" FontWeight="SemiBold"/>
                 </StackPanel>
             </Grid>
         </GroupBox>
