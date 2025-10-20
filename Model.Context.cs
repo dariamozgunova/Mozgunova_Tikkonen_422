@@ -15,11 +15,22 @@ namespace Mozgunova_Tikkonen_422
     
     public partial class Mozgunova_Tikkonen_422Entities : DbContext
     {
+        public static Mozgunova_Tikkonen_422Entities _context;
+
         public Mozgunova_Tikkonen_422Entities()
             : base("name=Mozgunova_Tikkonen_422Entities")
         {
         }
-    
+
+        public static Mozgunova_Tikkonen_422Entities GetContext()
+        {
+            if (_context == null)
+            {
+                _context = new Mozgunova_Tikkonen_422Entities();
+            }
+            return _context;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
