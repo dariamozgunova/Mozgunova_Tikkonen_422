@@ -112,7 +112,6 @@ namespace Mozgunova_Tikkonen_422.Pages
 
                 try
                 {
-                    // Находим товар в контексте
                     var productToUpdate = context.Products.Find(selectedProduct.ProductID);
 
                     if (productToUpdate != null)
