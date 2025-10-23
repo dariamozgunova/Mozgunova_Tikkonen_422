@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="29e7dea0dd534c219c91cd5c2084e0a2" Name="Diagram1">
+      <Diagram DiagramId="fd33e0e9df2b419b8f04685a9eaab352" Name="Diagram1">
         <EntityTypeShape EntityType="Mozgunova_Tikkonen_422Model.Category" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Mozgunova_Tikkonen_422Model.Product" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Mozgunova_Tikkonen_422Model.Statistic" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <AssociationConnector Association="Mozgunova_Tikkonen_422Model.FK__Product__Categor__3E52440B" ManuallyRouted="false" />
-        <AssociationConnector Association="Mozgunova_Tikkonen_422Model.FK__Statistic__Categ__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="Mozgunova_Tikkonen_422Model.FK__Product__Categor__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="Mozgunova_Tikkonen_422Model.FK__Statistic__Categ__3C69FB99" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

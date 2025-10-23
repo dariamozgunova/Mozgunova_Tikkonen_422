@@ -23,7 +23,6 @@ namespace Mozgunova_Tikkonen_422
         public MainWindow()
         {
             InitializeComponent();
-            // По умолчанию открываем модуль товаров
             MainFrame.Navigate(new Pages.ProductsPage());
         }
 
@@ -39,7 +38,7 @@ namespace Mozgunova_Tikkonen_422
 
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Модуль поиска будет реализован Разработчиком 2");
+            MainFrame.Navigate(new Pages.SearchPage());
         }
     }
 }
