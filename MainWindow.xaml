@@ -16,6 +16,8 @@
             <Button x:Name="btnProducts" Content="Товары" Click="BtnProducts_Click" Width="100" Height="30" Margin="5"/>
             <Button x:Name="btnStatistics" Content="Статистика" Click="BtnStatistics_Click" Width="100" Height="30" Margin="5"/>
             <Button x:Name="btnSearch" Content="Поиск" Click="BtnSearch_Click" Width="100" Height="30" Margin="5"/>
+            <Button x:Name="btnCalc" Content="Калькулятор" Click="BtnCalc_Click" Width="100" Height="30" Margin="5"/>
+
         </StackPanel>
 
         <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>

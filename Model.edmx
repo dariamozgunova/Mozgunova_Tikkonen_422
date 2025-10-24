@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Mozgunova_Tikkonen_422Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -32,7 +32,17 @@
           <Property Name="AveragePrice" Type="decimal" Precision="10" Scale="2" />
           <Property Name="TotalValue" Type="decimal" Precision="15" Scale="2" />
         </EntityType>
-        <Association Name="FK__Product__Categor__3E52440B">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__Product__Categor__398D8EEE">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -44,7 +54,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Statistic__Categ__412EB0B6">
+        <Association Name="FK__Statistic__Categ__3C69FB99">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Statistic" Type="Self.Statistic" Multiplicity="*" />
           <ReferentialConstraint>
@@ -56,15 +66,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище Mozgunova_Tikkonen_422ModelContainer">
+        <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Statistic" EntityType="Self.Statistic" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Product__Categor__3E52440B" Association="Self.FK__Product__Categor__3E52440B">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Product__Categor__398D8EEE" Association="Self.FK__Product__Categor__398D8EEE">
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Statistic__Categ__412EB0B6" Association="Self.FK__Statistic__Categ__412EB0B6">
+          <AssociationSet Name="FK__Statistic__Categ__3C69FB99" Association="Self.FK__Statistic__Categ__3C69FB99">
             <End Role="Category" EntitySet="Category" />
             <End Role="Statistic" EntitySet="Statistic" />
           </AssociationSet>
@@ -73,15 +84,15 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Mozgunova_Tikkonen_422Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="Self.FK__Product__Categor__3E52440B" FromRole="Category" ToRole="Product" />
-          <NavigationProperty Name="Statistics" Relationship="Self.FK__Statistic__Categ__412EB0B6" FromRole="Category" ToRole="Statistic" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Categor__398D8EEE" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="Statistic" Relationship="Self.FK__Statistic__Categ__3C69FB99" FromRole="Category" ToRole="Statistic" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -92,7 +103,7 @@
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__3E52440B" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__398D8EEE" FromRole="Product" ToRole="Category" />
         </EntityType>
         <EntityType Name="Statistic">
           <Key>
@@ -103,9 +114,19 @@
           <Property Name="TotalProducts" Type="Int32" />
           <Property Name="AveragePrice" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="TotalValue" Type="Decimal" Precision="15" Scale="2" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__Statistic__Categ__412EB0B6" FromRole="Statistic" ToRole="Category" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Statistic__Categ__3C69FB99" FromRole="Statistic" ToRole="Category" />
         </EntityType>
-        <Association Name="FK__Product__Categor__3E52440B">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__Product__Categor__398D8EEE">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -117,7 +138,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Statistic__Categ__412EB0B6">
+        <Association Name="FK__Statistic__Categ__3C69FB99">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Statistic" Type="Self.Statistic" Multiplicity="*" />
           <ReferentialConstraint>
@@ -130,16 +151,17 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Mozgunova_Tikkonen_422Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Categories" EntityType="Self.Category" />
-          <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="Statistics" EntityType="Self.Statistic" />
-          <AssociationSet Name="FK__Product__Categor__3E52440B" Association="Self.FK__Product__Categor__3E52440B">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Product" EntitySet="Products" />
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="Statistic" EntityType="Self.Statistic" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK__Product__Categor__398D8EEE" Association="Self.FK__Product__Categor__398D8EEE">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Statistic__Categ__412EB0B6" Association="Self.FK__Statistic__Categ__412EB0B6">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Statistic" EntitySet="Statistics" />
+          <AssociationSet Name="FK__Statistic__Categ__3C69FB99" Association="Self.FK__Statistic__Categ__3C69FB99">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Statistic" EntitySet="Statistic" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -147,17 +169,17 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище Mozgunova_Tikkonen_422ModelContainer" CdmEntityContainer="Mozgunova_Tikkonen_422Entities">
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="Mozgunova_Tikkonen_422Model.Category">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Mozgunova_Tikkonen_422Entities">
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="Model.Category">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="Mozgunova_Tikkonen_422Model.Product">
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="Model.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -167,14 +189,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Statistics">
-            <EntityTypeMapping TypeName="Mozgunova_Tikkonen_422Model.Statistic">
+          <EntitySetMapping Name="Statistic">
+            <EntityTypeMapping TypeName="Model.Statistic">
               <MappingFragment StoreEntitySet="Statistic">
                 <ScalarProperty Name="StatisticsID" ColumnName="StatisticsID" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="TotalProducts" ColumnName="TotalProducts" />
                 <ScalarProperty Name="AveragePrice" ColumnName="AveragePrice" />
                 <ScalarProperty Name="TotalValue" ColumnName="TotalValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -192,9 +225,9 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>

@@ -41,5 +41,10 @@ namespace Mozgunova_Tikkonen_422
         {
             MessageBox.Show("Модуль поиска будет реализован Разработчиком 2");
         }
+
+        private void BtnCalc_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.CalcPage());
+        }
     }
 }

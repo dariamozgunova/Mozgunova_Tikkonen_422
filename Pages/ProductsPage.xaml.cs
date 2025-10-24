@@ -36,7 +36,7 @@ namespace Mozgunova_Tikkonen_422.Pages
         {
             try
             {
-                cmbCategory.ItemsSource = context.Categories.ToList();
+                cmbCategory.ItemsSource = context.Category.ToList();
                 cmbCategory.DisplayMemberPath = "CategoryName";
                 cmbCategory.SelectedValuePath = "CategoryID";
             }
@@ -50,7 +50,7 @@ namespace Mozgunova_Tikkonen_422.Pages
         {
             try
             {
-                var products = context.Products
+                var products = context.Product
                     .Include("Category")
                     .ToList();
 
@@ -86,7 +86,7 @@ namespace Mozgunova_Tikkonen_422.Pages
                     Quantity = int.Parse(txtQuantity.Text)
                 };
 
-                context.Products.Add(newProduct);
+                context.Product.Add(newProduct);
                 context.SaveChanges();
 
                 LoadProducts();
@@ -111,7 +111,7 @@ namespace Mozgunova_Tikkonen_422.Pages
 
                 try
                 {
-                    var productToUpdate = context.Products.Find(selectedProduct.ProductID);
+                    var productToUpdate = context.Product.Find(selectedProduct.ProductID);
 
                     if (productToUpdate != null)
                     {
@@ -150,10 +150,10 @@ namespace Mozgunova_Tikkonen_422.Pages
                 {
                     try
                     {
-                        var productToDelete = context.Products.Find(selectedProduct.ProductID);
+                        var productToDelete = context.Product.Find(selectedProduct.ProductID);
                         if (productToDelete != null)
                         {
-                            context.Products.Remove(productToDelete);
+                            context.Product.Remove(productToDelete);
                             context.SaveChanges();
 
                             LoadProducts();
