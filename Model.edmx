@@ -32,7 +32,7 @@
           <Property Name="AveragePrice" Type="decimal" Precision="10" Scale="2" />
           <Property Name="TotalValue" Type="decimal" Precision="15" Scale="2" />
         </EntityType>
-        <Association Name="FK__Product__Categor__3E52440B">
+        <Association Name="FK__Product__Categor__398D8EEE">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -44,7 +44,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Statistic__Categ__412EB0B6">
+        <Association Name="FK__Statistic__Categ__3C69FB99">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Statistic" Type="Self.Statistic" Multiplicity="*" />
           <ReferentialConstraint>
@@ -60,11 +60,11 @@
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Statistic" EntityType="Self.Statistic" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Product__Categor__3E52440B" Association="Self.FK__Product__Categor__3E52440B">
+          <AssociationSet Name="FK__Product__Categor__398D8EEE" Association="Self.FK__Product__Categor__398D8EEE">
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Statistic__Categ__412EB0B6" Association="Self.FK__Statistic__Categ__412EB0B6">
+          <AssociationSet Name="FK__Statistic__Categ__3C69FB99" Association="Self.FK__Statistic__Categ__3C69FB99">
             <End Role="Category" EntitySet="Category" />
             <End Role="Statistic" EntitySet="Statistic" />
           </AssociationSet>
@@ -80,8 +80,8 @@
           </Key>
           <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="Self.FK__Product__Categor__3E52440B" FromRole="Category" ToRole="Product" />
-          <NavigationProperty Name="Statistics" Relationship="Self.FK__Statistic__Categ__412EB0B6" FromRole="Category" ToRole="Statistic" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Product__Categor__398D8EEE" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="Statistics" Relationship="Self.FK__Statistic__Categ__3C69FB99" FromRole="Category" ToRole="Statistic" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -92,7 +92,7 @@
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__3E52440B" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__398D8EEE" FromRole="Product" ToRole="Category" />
         </EntityType>
         <EntityType Name="Statistic">
           <Key>
@@ -103,9 +103,9 @@
           <Property Name="TotalProducts" Type="Int32" />
           <Property Name="AveragePrice" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="TotalValue" Type="Decimal" Precision="15" Scale="2" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__Statistic__Categ__412EB0B6" FromRole="Statistic" ToRole="Category" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Statistic__Categ__3C69FB99" FromRole="Statistic" ToRole="Category" />
         </EntityType>
-        <Association Name="FK__Product__Categor__3E52440B">
+        <Association Name="FK__Product__Categor__398D8EEE">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -117,7 +117,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Statistic__Categ__412EB0B6">
+        <Association Name="FK__Statistic__Categ__3C69FB99">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Statistic" Type="Self.Statistic" Multiplicity="*" />
           <ReferentialConstraint>
@@ -133,11 +133,11 @@
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Statistics" EntityType="Self.Statistic" />
-          <AssociationSet Name="FK__Product__Categor__3E52440B" Association="Self.FK__Product__Categor__3E52440B">
+          <AssociationSet Name="FK__Product__Categor__398D8EEE" Association="Self.FK__Product__Categor__398D8EEE">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__Statistic__Categ__412EB0B6" Association="Self.FK__Statistic__Categ__412EB0B6">
+          <AssociationSet Name="FK__Statistic__Categ__3C69FB99" Association="Self.FK__Statistic__Categ__3C69FB99">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Statistic" EntitySet="Statistics" />
           </AssociationSet>
